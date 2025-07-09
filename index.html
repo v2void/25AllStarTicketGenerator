@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>티켓 생성기</title>
+  <title>2025 올스타전 소장용 티켓 생성기</title>
   <style>
     @font-face {
       font-family: 'Gulim';
@@ -37,9 +37,9 @@
 </head>
 <body>
   <h1>🎟 티켓 정보 입력</h1>
-  <input type="text" id="seat" placeholder="좌석 위치 (예: 1층 105구역 7열 8번)" /><br />
-  <input type="text" id="section" placeholder="좌석 이름 (예: 카스존(응원단석))" /><br />
-  <input type="text" id="price" placeholder="가격 (예: 17,500원)" /><br />
+  <input type="text" id="seat" placeholder="좌석 위치 (예: 1층 108구역 1열 1번)" /><br />
+  <input type="text" id="section" placeholder="좌석 이름 (예: 신한 SOL뱅크 워터존)" /><br />
+  <input type="text" id="price" placeholder="가격 (예: 35,000원)" /><br />
   <input type="text" id="name" placeholder="예매자명 (예: 보이드)" /><br />
   <button onclick="drawTicket()">티켓 생성</button>
   <button onclick="downloadImage()">이미지 저장</button>
@@ -64,15 +64,15 @@
         ctx.drawImage(baseImage, 0, 0);
 
         ctx.fillStyle = "black";
-        ctx.font = "28px Gulim";
-        ctx.fillText(seat, 70, 920);
+        ctx.font = "bold 54px Gulim";
+        ctx.fillText(seat, 81, 870);
 
-        ctx.font = "26px Gulim";
-        ctx.fillText(section, 70, 960);
-        ctx.fillText(price, 70, 1000);
+        ctx.font = "bold 44px Gulim";
+        ctx.fillText(section, 81, 930);
+        ctx.fillText(price, 81, 1040);
 
-        ctx.font = "bold 28px Gulim";
-        ctx.fillText(name, 70, 1040);
+        ctx.font = "40px Gulim";
+        ctx.fillText(name, 81, 1090);
       };
 
       if (baseImage.complete) {
