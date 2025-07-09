@@ -33,10 +33,17 @@
       font-size: 16px;
       font-family: 'Gulim', sans-serif;
     }
+    .date-selector {
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
   <h1>🎟 티켓 정보 입력</h1>
+  <div class="date-selector">
+    <label><input type="radio" name="date" value="futures" checked /> 프라이데이</label>
+    <label><input type="radio" name="date" value="allstar" /> 올스타</label>
+  </div>
   <input type="text" id="seat" placeholder="좌석 위치 (예: 1층 108구역 1열 1번)" /><br />
   <input type="text" id="section" placeholder="좌석 이름 (예: 신한 SOL뱅크 워터존)" /><br />
   <input type="text" id="price" placeholder="가격 (예: 35,000원)" /><br />
@@ -50,8 +57,11 @@
   <script>
     const canvas = document.getElementById("ticketCanvas");
     const ctx = canvas.getContext("2d");
-    const baseImage = new Image();
-    baseImage.src = "ticket_template.png";
+
+    function getSelectedImage() {
+      const selected = document.querySelector('input[name="date"]:checked').value;
+      return selected === "futures" ? "futures.png" : "allstar.png";
+    }
 
     function drawTicket() {
       const seat = document.getElementById("seat").value;
@@ -59,9 +69,12 @@
       const price = document.getElementById("price").value;
       const name = document.getElementById("name").value;
 
-      baseImage.onload = () => {
+      const bgImage = new Image();
+      bgImage.src = getSelectedImage();
+
+      bgImage.onload = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(baseImage, 0, 0);
+        ctx.drawImage(bgImage, 0, 0);
 
         ctx.fillStyle = "black";
         ctx.font = "bold 54px Gulim";
